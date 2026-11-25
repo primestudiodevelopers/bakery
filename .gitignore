@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Production build output
+dist/
+dist-ssr/
+
+# Local environment & Vercel metadata
+.env
+.env.local
+.env.*.local
+.vercel/
+
+# OS & logs
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
