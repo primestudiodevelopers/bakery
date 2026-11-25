@@ -1,0 +1,913 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHRI BLACK FOREST — Chidambaram Patisserie</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'deep-chocolate': '#3B211C',
+        'warm-ivory': '#FFF8EF',
+        'cherry-burgundy': '#722C36',
+        'soft-caramel': '#C59B72',
+        'warm-beige': '#D9C8B7',
+        'ivory-soft': '#F7EFE4',
+        'chocolate-muted': '#6B4F49',
+        'white': '#FFFFFF',
+        'light-primary': '#3B211C',
+        'light-on-primary': '#FFF8EF',
+        'light-secondary': '#722C36',
+        'light-on-secondary': '#FFF8EF',
+        'light-tertiary': '#C59B72',
+        'light-on-tertiary': '#3B211C',
+        'light-surface': '#FFF8EF',
+        'light-on-surface': '#3B211C',
+        'light-surface-variant': '#F7EFE4',
+        'light-on-surface-variant': '#6B4F49',
+      },
+      borderRadius: {
+        'sm': '8px',
+        'DEFAULT': '12px',
+        'md': '16px',
+        'lg': '24px',
+        'xl': '32px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'gutter-2xl': '48px',
+        'section': '64px',
+        'section-lg': '96px',
+        'page-margin': '24px',
+      },
+      fontFamily: {
+        'display': ['"Playfair Display"', 'sans-serif'],
+        'headline': ['"Playfair Display"', 'sans-serif'],
+        'title': ['"Raleway"', 'sans-serif'],
+        'body': ['"Raleway"', 'sans-serif'],
+        'label': ['"Raleway"', 'sans-serif'],
+      },
+      fontSize: {
+        'display-xl': ['72px', { lineHeight: '76px', letterSpacing: '-1.5px', fontWeight: '700' }],
+        'display-xl-mobile': ['32px', { lineHeight: '36px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg': ['56px', { lineHeight: '62px', letterSpacing: '-1px', fontWeight: '700' }],
+        'display-lg-mobile': ['30px', { lineHeight: '34px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'headline-lg': ['40px', { lineHeight: '46px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'headline-lg-mobile': ['28px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '600' }],
+        'title-lg': ['22px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-md': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['18px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '500' }],
+        'label-lg': ['14px', { lineHeight: '18px', letterSpacing: '0.8px', fontWeight: '700' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '1.2px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '180ms',
+        'card-hover': '350ms',
+        'surface-enter': '600ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'card-hover': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'cubic-bezier(0.2, 0, 0, 1)',
+        'card-hover': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'surface-enter': 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;family=Raleway:wght@400;500;600;700&amp;family=Spline+Sans+Mono:wght@500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1), transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-item {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-warm-ivory text-deep-chocolate antialiased selection:bg-soft-caramel selection:text-deep-chocolate">
+
+  <main class="min-h-[884px] w-full overflow-x-hidden" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- SECTION 1: FULL-BLEED PHOTOGRAPHIC HERO (PRESERVED) -->
+    <section id="hero" class="relative min-h-[751px] w-full flex flex-col overflow-hidden px-page-margin pt-gutter-lg pb-gutter-2xl" data-stitch-vh="min-h-[751px]===min-h-[85svh]">
+      <img id="hero-bg-img" src="https://lh3.googleusercontent.com/aida/ALJJyrD61--frsOZACzv-fHKBhBRXVL0esJlxcVtQk1T1dNwLHDJdTMNazaQpY7ktiDXNJT5eRhuIcN2dJEh5v4tqk8WvfGGMgi8m0XCyjihrW9uOsyHFF1eujx3kPY4ar2LkOgdqT0ouktWfAZ1d0JslAtNwPcj3paO218OXTUEnfKz_qiNhH80KyxYbQu6xy5mnu0csiE8EH8eecW1JaDsdg0gbOS-07XBiKG14eQA0J4FeZRxkLcLaYk" alt="SHRI BLACK FOREST Black Forest layer cake with fresh whipped cream, chocolate shavings, and cherries on an ivory stand" class="absolute inset-0 w-full h-full object-cover object-bottom will-change-transform">
+      <!-- Subtle top warm-chocolate gradient only behind upper typography so the cake remains bright and dominant -->
+      <div aria-hidden="true" class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to bottom, rgba(59, 33, 28, 0.34) 0%, rgba(59, 33, 28, 0.22) 38%, rgba(59, 33, 28, 0) 60%);"></div>
+
+      <!-- Transparent Brand Header -->
+      <header class="relative z-10 w-full max-w-5xl mx-auto flex items-start justify-between gap-gutter-md">
+        <div class="flex flex-col">
+          <span data-design-text-token="title-md" class="font-headline text-title-md uppercase tracking-wider text-warm-ivory">
+            SHRI BLACK FOREST
+          </span>
+          <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-widest text-warm-ivory">
+            CHIDAMBARAM
+          </span>
+        </div>
+
+        <a href="#final-cta" data-component-id="button-admin-link" data-component-type="button" data-component-variant="tertiary" class="inline-flex items-center px-gutter-md py-gutter-xs rounded-full border border-warm-ivory/80 font-label text-label-sm uppercase tracking-widest text-warm-ivory hover:bg-warm-ivory hover:text-deep-chocolate transition-colors duration-state-change whitespace-nowrap">
+          <span data-design-text-token="label-sm">ADMIN ↗</span>
+        </a>
+      </header>
+
+      <!-- Centered Hero Content matching reference vertical hierarchy -->
+      <div class="relative z-10 w-full max-w-sm md:max-w-lg mx-auto mt-gutter-xl flex flex-col items-center text-center gap-gutter-md">
+        <span data-design-text-token="label-sm" class="inline-flex items-center px-gutter-md py-gutter-xs rounded-full bg-warm-ivory text-deep-chocolate font-label text-label-sm uppercase tracking-wide whitespace-nowrap">
+          FRESHLY BAKED · IMPOSSIBLY TEMPTING
+        </span>
+
+        <h1 data-component-id="typography-display" data-component-type="typography" data-component-variant="display" data-design-text-token="headline-lg-mobile" class="font-headline text-headline-lg-mobile md:text-headline-lg text-warm-ivory uppercase tracking-wide">
+          DON&#39;T BLAME US<br>FOR YOUR CRAVINGS.
+        </h1>
+
+        <p data-component-id="typography-body" data-component-type="typography" data-component-variant="body" data-design-text-token="body-sm" class="font-body text-body-sm text-warm-ivory max-w-xs text-pretty">
+          Discover handcrafted cakes, delicate pastries and little moments of pure indulgence.
+        </p>
+
+        <div class="pt-gutter-xs flex flex-col items-center gap-gutter-sm">
+          <a href="#signature-cakes" data-component-id="button-hero-cta" data-component-type="button" data-component-variant="primary" class="inline-flex items-center justify-center min-h-[40px] px-gutter-lg py-gutter-sm rounded-full bg-warm-ivory text-deep-chocolate font-label text-label-sm uppercase tracking-wider transition-transform duration-state-change ease-state-change hover:-translate-y-0.5 hover:bg-ivory-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warm-ivory active:translate-y-0">
+            <span data-design-text-token="label-sm" class="whitespace-nowrap">GIVE IN TO YOUR CRAVINGS ↗</span>
+          </a>
+
+          <a href="#testimonials" aria-label="Google Rating 4.0 out of 5 from 500 Google reviews" class="inline-flex items-center gap-gutter-xs px-gutter-md py-1.5 rounded-full bg-warm-ivory/95 border border-warm-beige text-deep-chocolate shadow-sm transition-colors duration-state-change hover:bg-white whitespace-nowrap">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"></path>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"></path>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"></path>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"></path>
+            </svg>
+            <span class="font-body text-xs font-semibold text-deep-chocolate tabular-nums">4.0</span>
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill="#FBBC04" d="M10 1.5l2.58 5.23 5.77.84-4.17 4.07.98 5.75L10 14.68l-5.16 2.71.98-5.75L1.65 7.57l5.77-.84L10 1.5z"></path>
+            </svg>
+            <span class="font-body text-xs font-medium text-chocolate-muted">· 500 Google reviews</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SIGNATURE CAKES (WARM IVORY SURFACE, DEEP CHOCOLATE TYPE, CHERRY & CARAMEL ACCENTS) -->
+    <section id="signature-cakes" class="w-full bg-warm-ivory py-gutter-2xl md:py-section">
+      <div class="max-w-5xl mx-auto px-page-margin flex flex-col gap-gutter-xl">
+        <header class="reveal-item flex flex-col gap-gutter-xs border-b border-warm-beige pb-gutter-md">
+          <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-widest text-cherry-burgundy">
+            Signature Collection
+          </span>
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-gutter-xs">
+            <h2 data-design-text-token="display-lg-mobile" class="font-display text-display-lg-mobile md:text-display-lg text-deep-chocolate uppercase text-balance">
+              THE OBJECTS OF OUR OBSESSION.
+            </h2>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-chocolate-muted text-pretty">
+              Some things are simply too good to share.
+            </p>
+          </div>
+        </header>
+
+        <!-- #1 Lead Editorial Feature: Black Forest -->
+        <article data-component-id="editorial-cake-lead" data-component-type="card" data-component-variant="elevated" class="reveal-item group flex flex-col md:grid md:grid-cols-12 gap-gutter-md md:gap-gutter-xl items-center">
+          <div class="w-full md:col-span-7 overflow-hidden rounded-sm">
+            <img src="https://lh3.googleusercontent.com/aida/ALJJyrDnrI3WsfmglGraLHKMIMpUK6i3hSJnfdsYCdQnEjiFeQl3pSta6gxjG5P7rPLyCYMCAN87OaZt59JcBpyiGTP_w9Un0gHgUHhy_fJvDzY8x6fWfy4JkHSWDV7mjUtKqtkORUQ8Mlk-NfT7tAxfBPt0LqhT9_8r8OnXmgTNltwYQwy7fK0UfE0KE-G3hOQCc5eyKz0_3s_9rqmt8GON7d_75mx4mw91somCJQGuBCWIcq55kRQaVe_ixQ28" alt="Black Forest signature layer cake with dark chocolate shavings and cherries" class="w-full aspect-[4/3] object-cover transition-transform duration-card-hover ease-card-hover group-hover:scale-105">
+          </div>
+          <div class="w-full md:col-span-5 flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="self-start px-gutter-sm py-gutter-xs rounded-full bg-cherry-burgundy text-warm-ivory font-label text-label-sm uppercase tracking-wider">
+              House Icon
+            </span>
+            <h3 data-design-text-token="headline-md" class="font-headline text-headline-md text-deep-chocolate">Black Forest</h3>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-chocolate-muted text-pretty">
+              Feather-light cocoa sponge, Chantilly cream peaks, dark chocolate curls, and ruby cherries.
+            </p>
+            <div class="pt-gutter-xs">
+              <button type="button" data-add-to-cart data-product-id="black-forest" data-product-name="Black Forest" data-product-price="650" data-product-image="../../images/cake_black_forest.jpg" class="inline-flex items-center justify-center gap-gutter-xs min-h-10 px-gutter-md py-gutter-xs rounded-sm bg-deep-chocolate text-warm-ivory font-label text-label-sm uppercase tracking-wider transition-colors duration-state-change hover:bg-cherry-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deep-chocolate whitespace-nowrap">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">shopping_bag</span>
+                <span data-design-text-token="label-sm">+ ADD TO CART</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- #2 & #3 Compact 2-Column Photo Pair on Mobile & Desktop -->
+        <div class="grid grid-cols-2 gap-gutter-md md:gap-gutter-xl items-stretch">
+          <article data-component-id="editorial-cake-pair" data-component-type="card" data-component-variant="elevated" class="reveal-item group flex flex-col justify-between gap-gutter-sm h-full">
+            <div class="flex flex-col gap-gutter-sm">
+              <div class="overflow-hidden rounded-sm">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrD4pcn3UmWW0rZzD1YpgBJakmUVs4bcQMPljt9qiK1ZQn-U70vx0YPAyyql131OHkW5WEwNDaneFAmIJ_5pCRq3uMS-g4Ab4Rzl17fNMVokT8RaiMbfnzq52t4pQ0CRfSbpXCn0M4W53kubSrmLgl396QdGYJSGNC9Z7h3vQFJ3uBjPpEHOzY6LBxFYUXBQ6FBRoIzfEyr9Dh7RTZ-CQN83bEBYTG8WohEWE5mV2tWY54cXysP3mZ5M0widDSiusOE" alt="Chocolate Truffle cake with glossy dark ganache glaze" class="w-full aspect-[3/4] object-cover transition-transform duration-card-hover ease-card-hover group-hover:scale-105">
+              </div>
+              <div class="flex flex-col gap-gutter-xs">
+                <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase text-soft-caramel">Pure Cocoa</span>
+                <h3 data-design-text-token="body-md" class="font-body font-bold text-body-md text-deep-chocolate">Chocolate Truffle</h3>
+                <p data-design-text-token="body-sm" class="font-body text-body-sm text-chocolate-muted text-pretty">
+                  Rich dark sponge glazed in mirror-smooth ganache.
+                </p>
+              </div>
+            </div>
+            <button type="button" data-add-to-cart data-product-id="chocolate-truffle" data-product-name="Chocolate Truffle" data-product-price="720" data-product-image="../../images/cake_chocolate_truffle.jpg" class="w-full inline-flex items-center justify-center gap-gutter-xs min-h-10 px-gutter-sm py-gutter-xs rounded-sm bg-deep-chocolate text-warm-ivory font-label text-label-sm uppercase tracking-wider transition-colors duration-state-change hover:bg-cherry-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deep-chocolate whitespace-nowrap">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">shopping_bag</span>
+              <span data-design-text-token="label-sm">+ ADD TO CART</span>
+            </button>
+          </article>
+
+          <article data-component-id="editorial-cake-pair" data-component-type="card" data-component-variant="elevated" class="reveal-item group flex flex-col justify-between gap-gutter-sm h-full">
+            <div class="flex flex-col gap-gutter-sm">
+              <div class="overflow-hidden rounded-sm">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrDQ2Ze64SrgNl21SyS8A720qgaXDKNNPRxC_OrrJkHaMTivbloBw8ndFRt3a8K-sy5nJSaCqZt3NG6okSxl0NJtp7hXhn5Zl78w9gUusU4tciy7wr3MooOPvfpp5pFzcwPvbfcbhuIUnPs2EUBQqr0YGM8Q-68mCGNRCusdDsVgb1QXANuZMowz5NWga7LdxCPmLAejGOpdHrDIB0FoX6IuoO2lc1HQopBaX-9JQJxSm9hylo9r_84qMl09754ZpA" alt="Strawberry Dream cake topped with ripe glazed strawberries" class="w-full aspect-[3/4] object-cover transition-transform duration-card-hover ease-card-hover group-hover:scale-105">
+              </div>
+              <div class="flex flex-col gap-gutter-xs">
+                <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase text-cherry-burgundy">Berry &amp; Cream</span>
+                <h3 data-design-text-token="body-md" class="font-body font-bold text-body-md text-deep-chocolate">Strawberry Dream</h3>
+                <p data-design-text-token="body-sm" class="font-body text-body-sm text-chocolate-muted text-pretty">
+                  Vanilla sponge with fresh strawberry compote and cream.
+                </p>
+              </div>
+            </div>
+            <button type="button" data-add-to-cart data-product-id="strawberry-dream" data-product-name="Strawberry Dream" data-product-price="680" data-product-image="../../images/cake_strawberry_dream.jpg" class="w-full inline-flex items-center justify-center gap-gutter-xs min-h-10 px-gutter-sm py-gutter-xs rounded-sm bg-deep-chocolate text-warm-ivory font-label text-label-sm uppercase tracking-wider transition-colors duration-state-change hover:bg-cherry-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deep-chocolate whitespace-nowrap">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">shopping_bag</span>
+              <span data-design-text-token="label-sm">+ ADD TO CART</span>
+            </button>
+          </article>
+        </div>
+
+        <!-- #4 & #5 Horizontal Editorial Split Rows -->
+        <div class="flex flex-col divide-y divide-warm-beige border-t border-b border-warm-beige">
+          <article data-component-id="editorial-cake-row" data-component-type="card" data-component-variant="elevated" class="reveal-item group grid grid-cols-12 gap-gutter-md items-center py-gutter-md">
+            <div class="col-span-4 md:col-span-3 overflow-hidden rounded-sm">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrAt_U2VvQZV2lbPmy_7MD9bS0KIG6Tolk8k5wRzVB8QPpqeLqgtkfff0qbjSh3XNZO1DZuRvXr8582XxI2ezVNhNnfa8nXru6k0lq1X4DhEVp3ovs0Hg2A3E1NYNMZaNWgGe8_SPkAxBxkhEQ61Th0PTFBPRouPg7hcfguMqh47v97oQdd3MUdUpOxk5TdW6HXjvFFGrQJIOYlyotBi58o95FrdDfVQCiF37-_sbSV2559kXOrwyjW8Og" alt="Red Velvet cake with smooth cream cheese frosting" class="w-full aspect-square object-cover transition-transform duration-card-hover ease-card-hover group-hover:scale-105">
+            </div>
+            <div class="col-span-8 md:col-span-9 flex flex-col gap-gutter-xs">
+              <span data-design-text-token="label-sm" class="self-start px-gutter-sm py-gutter-xs rounded-full bg-deep-chocolate text-warm-ivory font-label text-label-sm uppercase">
+                Crimson Classic
+              </span>
+              <h3 data-design-text-token="title-lg" class="font-title text-title-lg text-deep-chocolate">Red Velvet</h3>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-chocolate-muted text-pretty">
+                Tender crimson cocoa crumb finished with whipped cream cheese frosting.
+              </p>
+              <div class="pt-gutter-xs">
+                <button type="button" data-add-to-cart data-product-id="red-velvet" data-product-name="Red Velvet" data-product-price="750" data-product-image="../../images/cake_red_velvet.jpg" class="inline-flex items-center justify-center gap-gutter-xs min-h-10 px-gutter-md py-gutter-xs rounded-sm bg-deep-chocolate text-warm-ivory font-label text-label-sm uppercase tracking-wider transition-colors duration-state-change hover:bg-cherry-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deep-chocolate whitespace-nowrap">
+                  <span class="material-symbols-outlined text-[16px]" aria-hidden="true">shopping_bag</span>
+                  <span data-design-text-token="label-sm">+ ADD TO CART</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article data-component-id="editorial-cake-row" data-component-type="card" data-component-variant="elevated" class="reveal-item group grid grid-cols-12 gap-gutter-md items-center py-gutter-md">
+            <div class="col-span-8 md:col-span-9 flex flex-col gap-gutter-xs">
+              <span data-design-text-token="label-sm" class="self-start px-gutter-sm py-gutter-xs rounded-full bg-deep-chocolate text-warm-ivory font-label text-label-sm uppercase">
+                Caramel Crunch
+              </span>
+              <h3 data-design-text-token="title-lg" class="font-title text-title-lg text-deep-chocolate">Butterscotch</h3>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-chocolate-muted text-pretty">
+                Caramelized sponge layered with butterscotch cream and crisp praline shards.
+              </p>
+              <div class="pt-gutter-xs">
+                <button type="button" data-add-to-cart data-product-id="butterscotch" data-product-name="Butterscotch" data-product-price="620" data-product-image="../../images/cake_butterscotch.jpg" class="inline-flex items-center justify-center gap-gutter-xs min-h-10 px-gutter-md py-gutter-xs rounded-sm bg-deep-chocolate text-warm-ivory font-label text-label-sm uppercase tracking-wider transition-colors duration-state-change hover:bg-cherry-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deep-chocolate whitespace-nowrap">
+                  <span class="material-symbols-outlined text-[16px]" aria-hidden="true">shopping_bag</span>
+                  <span data-design-text-token="label-sm">+ ADD TO CART</span>
+                </button>
+              </div>
+            </div>
+            <div class="col-span-4 md:col-span-3 overflow-hidden rounded-sm">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrB_UkYRm7DCYxcF-YCMBna7zGKsu8b34PzBvoYq2CPmchTAh-S2KlYKT34ufomf8Uo5Jp_dLBjXheUuQ8JJmYVcZcAFkaLkWq8vb5o-wHiSDIVA6xXOux22P0RQf2p2qxkWR8XzDZQs-loq12JJiX2jmaOKNP7E4bRpAQWRTRumZkLyAS8V-CW9jmD8b6ZAl65dJEFRUAs9flSiLOorCpFEVOd8kyWf1AoIH0_b7-pXcHfmemGNvfm8HIXu" alt="Butterscotch cake with golden caramel drizzle and praline crunch" class="w-full aspect-square object-cover transition-transform duration-card-hover ease-card-hover group-hover:scale-105">
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: EXPLORE OUR CRAVINGS (SOFT IVORY SURFACE WITH CARAMEL & CHERRY ACCENTS) -->
+    <section id="explore-cravings" class="w-full bg-ivory-soft py-gutter-2xl md:py-section border-t border-warm-beige">
+      <div class="max-w-5xl mx-auto px-page-margin flex flex-col gap-gutter-lg">
+        <header class="reveal-item flex items-center justify-between gap-gutter-md border-b border-warm-beige pb-gutter-sm">
+          <h2 data-design-text-token="headline-lg-mobile" class="font-headline text-headline-lg-mobile md:text-headline-lg text-deep-chocolate uppercase">
+            EXPLORE OUR CRAVINGS.
+          </h2>
+          <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase text-chocolate-muted whitespace-nowrap">
+            4 Specialties
+          </span>
+        </header>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter-md items-stretch">
+          <div data-component-id="craving-tile" data-component-type="card" data-component-variant="interactive" class="reveal-item group flex flex-col justify-between gap-gutter-sm h-full">
+            <div class="flex flex-col gap-gutter-xs">
+              <div class="overflow-hidden rounded-sm border-b-2 border-cherry-burgundy">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrBtdF05svpVcrpzifNtNJQ77VjLTMM0X_PZ8GGQU6TC4dcHoUmfMQUlDjLC7LrhTvPUo3VINCFAldHsl4mCIWr-LlrPdEQyHA5PDo-QxqvZZkZnfQalyoJKBgWE40wcc30Sby0KLYeo991cCJRhwuhpOt8Z2iDFWU-Shf6PY5_B7lGYqo8Vz6aCUSYm0J_R9U-s9Vkl2P7fXFySOXiMJF6fI_FiGg6WlB_SvBeFnuTL5abZtpjAYCN46A" alt="Celebration Cakes multi-tiered showcase" class="w-full aspect-[4/5] object-cover transition-transform duration-card-hover ease-card-hover group-hover:scale-105">
+              </div>
+              <h3 data-design-text-token="body-md" class="font-body font-bold text-body-md text-deep-chocolate">Celebration Cakes</h3>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-chocolate-muted">Tiered centerpieces</p>
+            </div>
+            <button type="button" data-add-to-cart data-product-id="celebration-cakes" data-product-name="Celebration Cakes" data-product-price="1450" data-product-image="../../images/cat_celebration.jpg" class="w-full inline-flex items-center justify-center gap-gutter-xs min-h-10 px-gutter-sm py-gutter-xs rounded-sm bg-deep-chocolate text-warm-ivory font-label text-label-sm uppercase tracking-wider transition-colors duration-state-change hover:bg-cherry-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deep-chocolate whitespace-nowrap">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">shopping_bag</span>
+              <span data-design-text-token="label-sm">+ ADD TO CART</span>
+            </button>
+          </div>
+
+          <div data-component-id="craving-tile" data-component-type="card" data-component-variant="interactive" class="reveal-item group flex flex-col justify-between gap-gutter-sm h-full">
+            <div class="flex flex-col gap-gutter-xs">
+              <div class="overflow-hidden rounded-sm border-b-2 border-soft-caramel">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrBOoQM8Zq_OnS4RzrQyNQBvwwDBSr4QslWMWKDHJmvtHfOIYDoG2arzms6jEA94YfYZKLP-BUF4ZVDnWUXLnFKKif9EPTyDGCk2RwWfcfskKFtkPg0kQaOYNhlvLWn-Bku-MQIBSivOJ1Nr934NGr5JD-D1Bla3ttH_gnUGascS8j15_Q0Y640QNEHz-yccm7z39YB3MZb43aEY_BR4nOOQrkUEQtUBlnWVr3RZdNM7Qt4460RE" alt="Flaky artisanal pastries and tarts" class="w-full aspect-[4/5] object-cover transition-transform duration-card-hover ease-card-hover group-hover:scale-105">
+              </div>
+              <h3 data-design-text-token="title-md" class="font-title text-title-md text-deep-chocolate">Pastries</h3>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-chocolate-muted">Flaky &amp; glazed</p>
+            </div>
+            <button type="button" data-add-to-cart data-product-id="pastries" data-product-name="Pastries" data-product-price="180" data-product-image="../../images/cat_pastries.jpg" class="w-full inline-flex items-center justify-center gap-gutter-xs min-h-10 px-gutter-sm py-gutter-xs rounded-sm bg-deep-chocolate text-warm-ivory font-label text-label-sm uppercase tracking-wider transition-colors duration-state-change hover:bg-cherry-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deep-chocolate whitespace-nowrap">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">shopping_bag</span>
+              <span data-design-text-token="label-sm">+ ADD TO CART</span>
+            </button>
+          </div>
+
+          <div data-component-id="craving-tile" data-component-type="card" data-component-variant="interactive" class="reveal-item group flex flex-col justify-between gap-gutter-sm h-full">
+            <div class="flex flex-col gap-gutter-xs">
+              <div class="overflow-hidden rounded-sm border-b-2 border-deep-chocolate">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrDq3kjGCrSm30YkhLJ0VWXjHZ95ceUqwGPNviUfUZPvu1TeuqVgGNH3ZcvTmwN8AeIJh_WpG3xpzKA_skm4DqXXP-QcfElOhb83LOiFmc8Zu_NVS4_y6dipT2Xi_OTWboIe_AtKGnXH9kl1_xZdcChXT80ePL3KYEynY4PSXWDF92iTKjPx1Xq9VMUgaZO8xb_P2RNz8jEHgIJ9XI2F_1QK0PUdtRHrHACSzWrhlX18Pjt8f5M" alt="Gourmet frosted cupcakes" class="w-full aspect-[4/5] object-cover transition-transform duration-card-hover ease-card-hover group-hover:scale-105">
+              </div>
+              <h3 data-design-text-token="title-md" class="font-title text-title-md text-deep-chocolate">Cupcakes</h3>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-chocolate-muted">Swirled buttercream</p>
+            </div>
+            <button type="button" data-add-to-cart data-product-id="cupcakes" data-product-name="Cupcakes" data-product-price="140" data-product-image="../../images/cat_cupcakes.jpg" class="w-full inline-flex items-center justify-center gap-gutter-xs min-h-10 px-gutter-sm py-gutter-xs rounded-sm bg-deep-chocolate text-warm-ivory font-label text-label-sm uppercase tracking-wider transition-colors duration-state-change hover:bg-cherry-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deep-chocolate whitespace-nowrap">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">shopping_bag</span>
+              <span data-design-text-token="label-sm">+ ADD TO CART</span>
+            </button>
+          </div>
+
+          <div data-component-id="craving-tile" data-component-type="card" data-component-variant="interactive" class="reveal-item group flex flex-col justify-between gap-gutter-sm h-full">
+            <div class="flex flex-col gap-gutter-xs">
+              <div class="overflow-hidden rounded-sm border-b-2 border-cherry-burgundy">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrCka6ypjxM7rLLypCdQk2lo4SIecCiTuIRrfHYgKJzu3C7cpPJWICbC1eGRg_B5_xa9Q2v1ibJ5jDICp3jAlB5u3GAG5bMYvhMbOHcgMTMVS2QCK5aV_rW5m6rxS_SAxsBIjhLOmiK-YAXvrIYTZFdelEZis1wEw-h_N5a3TkT_L-9eRHFFzsI121ivCtwqxD6gvDvlDeZb88ZpSeenlXLA2n7Z-qAEjqB2Ic08ldryBSu5kbXn" alt="Plated mousse jars, verrines, and petit fours" class="w-full aspect-[4/5] object-cover transition-transform duration-card-hover ease-card-hover group-hover:scale-105">
+              </div>
+              <h3 data-design-text-token="title-md" class="font-title text-title-md text-deep-chocolate">Desserts</h3>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-chocolate-muted">Jars &amp; mousses</p>
+            </div>
+            <button type="button" data-add-to-cart data-product-id="desserts" data-product-name="Desserts" data-product-price="220" data-product-image="../../images/cat_desserts.jpg" class="w-full inline-flex items-center justify-center gap-gutter-xs min-h-10 px-gutter-sm py-gutter-xs rounded-sm bg-deep-chocolate text-warm-ivory font-label text-label-sm uppercase tracking-wider transition-colors duration-state-change hover:bg-cherry-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deep-chocolate whitespace-nowrap">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">shopping_bag</span>
+              <span data-design-text-token="label-sm">+ ADD TO CART</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: GOOGLE REVIEWS (WARM IVORY, CHERRY & CARAMEL ACCENTS, AUTHENTIC CUSTOMER FEEDBACK) -->
+    <section id="testimonials" class="w-full bg-warm-ivory py-gutter-2xl md:py-section border-t border-warm-beige">
+      <div class="max-w-5xl mx-auto px-page-margin flex flex-col gap-gutter-xl">
+        <header class="reveal-item flex flex-col md:flex-row md:items-end justify-between gap-gutter-md border-b border-warm-beige pb-gutter-lg">
+          <div class="flex flex-col gap-gutter-xs max-w-xl">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-widest text-cherry-burgundy">
+              Google Reviews
+            </span>
+            <h2 data-design-text-token="headline-lg-mobile" class="font-headline text-headline-lg-mobile md:text-headline-lg text-deep-chocolate uppercase text-balance">
+              REAL STORIES. REAL SWEET MOMENTS.
+            </h2>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-chocolate-muted text-pretty">
+              Don&#39;t just take our word for it. Discover what our customers say about their experiences at Shri Black Forest.
+            </p>
+          </div>
+
+          <div class="shrink-0 flex flex-col items-start gap-gutter-xs px-gutter-lg py-gutter-md rounded-md bg-white border border-warm-beige shadow-sm">
+            <div class="flex items-center gap-gutter-xs">
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"></path>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"></path>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"></path>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"></path>
+              </svg>
+              <span class="font-body text-sm font-semibold text-deep-chocolate">Google Reviews</span>
+            </div>
+            <div class="flex items-center gap-gutter-sm">
+              <span class="font-body text-xl font-bold text-deep-chocolate tabular-nums">4.0/5</span>
+              <span class="inline-flex items-center gap-0.5" aria-label="4.0 out of 5 stars">
+                <svg class="w-4 h-4" viewBox="0 0 20 20" aria-hidden="true"><path fill="#FBBC04" d="M10 1.5l2.58 5.23 5.77.84-4.17 4.07.98 5.75L10 14.68l-5.16 2.71.98-5.75L1.65 7.57l5.77-.84L10 1.5z"></path></svg>
+                <svg class="w-4 h-4" viewBox="0 0 20 20" aria-hidden="true"><path fill="#FBBC04" d="M10 1.5l2.58 5.23 5.77.84-4.17 4.07.98 5.75L10 14.68l-5.16 2.71.98-5.75L1.65 7.57l5.77-.84L10 1.5z"></path></svg>
+                <svg class="w-4 h-4" viewBox="0 0 20 20" aria-hidden="true"><path fill="#FBBC04" d="M10 1.5l2.58 5.23 5.77.84-4.17 4.07.98 5.75L10 14.68l-5.16 2.71.98-5.75L1.65 7.57l5.77-.84L10 1.5z"></path></svg>
+                <svg class="w-4 h-4" viewBox="0 0 20 20" aria-hidden="true"><path fill="#FBBC04" d="M10 1.5l2.58 5.23 5.77.84-4.17 4.07.98 5.75L10 14.68l-5.16 2.71.98-5.75L1.65 7.57l5.77-.84L10 1.5z"></path></svg>
+                <svg class="w-4 h-4" viewBox="0 0 20 20" aria-hidden="true"><path fill="#DADCE0" d="M10 1.5l2.58 5.23 5.77.84-4.17 4.07.98 5.75L10 14.68l-5.16 2.71.98-5.75L1.65 7.57l5.77-.84L10 1.5z"></path></svg>
+              </span>
+              <span class="font-body text-sm font-medium text-chocolate-muted tabular-nums">(500)</span>
+            </div>
+            <span class="font-body text-xs font-medium text-chocolate-muted">
+              500 Google reviews · Aggregate rating
+            </span>
+          </div>
+        </header>
+
+        <!-- Responsive Horizontal Carousel on Mobile, 3-Column Editorial Grid on Desktop -->
+        <div class="flex overflow-x-auto snap-x snap-mandatory gap-gutter-md pb-gutter-sm -mx-page-margin px-page-margin md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-3 md:gap-gutter-lg md:overflow-visible">
+          <!-- Review 1: Ajveen K -->
+          <article data-component-id="google-review-card" data-component-type="card" data-component-variant="outlined" class="reveal-item shrink-0 w-72 md:w-auto snap-start flex flex-col justify-between gap-gutter-md p-gutter-lg rounded-sm bg-warm-ivory border border-warm-beige border-t-2 border-t-cherry-burgundy">
+            <div class="flex flex-col gap-gutter-sm">
+              <div class="flex items-center justify-between gap-gutter-xs">
+                <span class="inline-flex items-center gap-1.5 font-body text-xs font-medium text-chocolate-muted">
+                  <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"></path>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"></path>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"></path>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"></path>
+                  </svg>
+                  Google Review
+                </span>
+              </div>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-deep-chocolate text-pretty">
+                “Awesome food quality.. perfect service... Specially staff mr. Deepak good contact to customers.”
+              </p>
+            </div>
+            <footer class="pt-gutter-sm border-t border-warm-beige">
+              <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-wider text-deep-chocolate">
+                AJVEEN K
+              </span>
+            </footer>
+          </article>
+
+          <!-- Review 2: Vaishnavi Kumar -->
+          <article data-component-id="google-review-card" data-component-type="card" data-component-variant="outlined" class="reveal-item shrink-0 w-72 md:w-auto snap-start flex flex-col justify-between gap-gutter-md p-gutter-lg rounded-sm bg-warm-ivory border border-warm-beige border-t-2 border-t-soft-caramel">
+            <div class="flex flex-col gap-gutter-sm">
+              <div class="flex items-center justify-between gap-gutter-xs">
+                <span class="inline-flex items-center gap-1.5 font-body text-xs font-medium text-chocolate-muted">
+                  <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"></path>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"></path>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"></path>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"></path>
+                  </svg>
+                  Google Review
+                </span>
+              </div>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-deep-chocolate text-pretty">
+                “My favourite cake shop is black forest Best service and package is very good.”
+              </p>
+            </div>
+            <footer class="pt-gutter-sm border-t border-warm-beige">
+              <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-wider text-deep-chocolate">
+                VAISHNAVI KUMAR
+              </span>
+            </footer>
+          </article>
+
+          <!-- Review 3: Dhinesh Dhinesh -->
+          <article data-component-id="google-review-card" data-component-type="card" data-component-variant="outlined" class="reveal-item shrink-0 w-72 md:w-auto snap-start flex flex-col justify-between gap-gutter-md p-gutter-lg rounded-sm bg-warm-ivory border border-warm-beige border-t-2 border-t-deep-chocolate">
+            <div class="flex flex-col gap-gutter-sm">
+              <div class="flex items-center justify-between gap-gutter-xs">
+                <span class="inline-flex items-center gap-1.5 font-body text-xs font-medium text-chocolate-muted">
+                  <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"></path>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"></path>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"></path>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"></path>
+                  </svg>
+                  Google Review
+                </span>
+              </div>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-deep-chocolate text-pretty">
+                “Good food quality and quantity, good service, reasonable price.”
+              </p>
+            </div>
+            <footer class="pt-gutter-sm border-t border-warm-beige">
+              <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-wider text-deep-chocolate">
+                DHINESH DHINESH
+              </span>
+            </footer>
+          </article>
+
+          <!-- Review 4: Akamedhu Meeran R -->
+          <article data-component-id="google-review-card" data-component-type="card" data-component-variant="outlined" class="reveal-item shrink-0 w-72 md:w-auto snap-start flex flex-col justify-between gap-gutter-md p-gutter-lg rounded-sm bg-warm-ivory border border-warm-beige border-t-2 border-t-cherry-burgundy">
+            <div class="flex flex-col gap-gutter-sm">
+              <div class="flex items-center justify-between gap-gutter-xs">
+                <span class="inline-flex items-center gap-1.5 font-body text-xs font-medium text-chocolate-muted">
+                  <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"></path>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"></path>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"></path>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"></path>
+                  </svg>
+                  Google Review
+                </span>
+              </div>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-deep-chocolate text-pretty">
+                “Lovely service ❤️ Low price tasty food.”
+              </p>
+            </div>
+            <footer class="pt-gutter-sm border-t border-warm-beige">
+              <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-wider text-deep-chocolate">
+                AKAMEDHU MEERAN R
+              </span>
+            </footer>
+          </article>
+
+          <!-- Review 5: Senthamizhan A -->
+          <article data-component-id="google-review-card" data-component-type="card" data-component-variant="outlined" class="reveal-item shrink-0 w-72 md:w-auto snap-start flex flex-col justify-between gap-gutter-md p-gutter-lg rounded-sm bg-warm-ivory border border-warm-beige border-t-2 border-t-soft-caramel">
+            <div class="flex flex-col gap-gutter-sm">
+              <div class="flex items-center justify-between gap-gutter-xs">
+                <span class="inline-flex items-center gap-1.5 font-body text-xs font-medium text-chocolate-muted">
+                  <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"></path>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"></path>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"></path>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"></path>
+                  </svg>
+                  Google Review
+                </span>
+              </div>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-deep-chocolate text-pretty">
+                Appreciated the bakery&#39;s prime city location and variety of pastries, while mentioning that the ambience can be busy and noisy.
+              </p>
+            </div>
+            <footer class="pt-gutter-sm border-t border-warm-beige">
+              <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-wider text-deep-chocolate">
+                SENTHAMIZHAN A
+              </span>
+            </footer>
+          </article>
+
+          <!-- Review 6: S.K.V. Parthiban -->
+          <article data-component-id="google-review-card" data-component-type="card" data-component-variant="outlined" class="reveal-item shrink-0 w-72 md:w-auto snap-start flex flex-col justify-between gap-gutter-md p-gutter-lg rounded-sm bg-warm-ivory border border-warm-beige border-t-2 border-t-deep-chocolate">
+            <div class="flex flex-col gap-gutter-sm">
+              <div class="flex items-center justify-between gap-gutter-xs">
+                <span class="inline-flex items-center gap-1.5 font-body text-xs font-medium text-chocolate-muted">
+                  <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"></path>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"></path>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"></path>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"></path>
+                  </svg>
+                  Google Review
+                </span>
+                <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-wider text-chocolate-muted">
+                  Service: 1/5
+                </span>
+              </div>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-deep-chocolate text-pretty">
+                “Am birthday cake order - Very very worst service..not responding.”
+              </p>
+              <p data-design-text-token="label-sm" class="font-label text-label-sm text-chocolate-muted">
+                Mentions a waiting time of over one hour.
+              </p>
+            </div>
+            <footer class="pt-gutter-sm border-t border-warm-beige">
+              <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-wider text-deep-chocolate">
+                S.K.V. PARTHIBAN
+              </span>
+            </footer>
+          </article>
+        </div>
+
+        <div class="reveal-item flex flex-col sm:flex-row sm:items-center justify-between gap-gutter-md pt-gutter-xs">
+          <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-wider text-chocolate-muted">
+            Swipe for more on mobile · Showing 6 customer excerpts
+          </span>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Shri+Black+Forest%2C+Krishna+Plaza%2C+103%2C+S+Car+St%2C+Chidambaram%2C+Tamil+Nadu+608001" target="_blank" rel="noopener noreferrer" data-component-id="button-google-reviews" data-component-type="button" data-component-variant="primary" class="inline-flex items-center justify-center gap-gutter-xs min-h-10 px-gutter-lg py-gutter-sm rounded-sm bg-deep-chocolate text-warm-ivory font-label text-label-sm uppercase tracking-wider transition-colors duration-state-change hover:bg-cherry-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deep-chocolate whitespace-nowrap">
+            <span data-design-text-token="label-sm">READ ALL GOOGLE REVIEWS ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: VISIT OUR BAKERY (SOFT IVORY EDITORIAL SPLIT + INTERACTIVE GOOGLE MAP) -->
+    <section id="visit-bakery" class="w-full bg-ivory-soft py-gutter-2xl md:py-section border-t border-warm-beige">
+      <div class="max-w-5xl mx-auto px-page-margin grid grid-cols-1 md:grid-cols-12 gap-gutter-lg md:gap-gutter-xl items-center">
+        <div class="reveal-item md:col-span-5 flex flex-col gap-gutter-md">
+          <div class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-widest text-soft-caramel">
+              COME VISIT US
+            </span>
+            <h2 data-design-text-token="headline-lg-mobile" class="font-headline text-headline-lg-mobile md:text-headline-lg text-deep-chocolate uppercase text-balance">
+              FIND YOUR WAY TO SOMETHING DELICIOUS.
+            </h2>
+          </div>
+
+          <p data-design-text-token="body-md" class="font-body text-body-md text-chocolate-muted text-pretty">
+            Your favourite cakes, freshly baked delights and sweet moments are waiting for you. Visit us at our bakery in Chidambaram.
+          </p>
+
+          <div class="border-t border-warm-beige pt-gutter-md flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-widest text-cherry-burgundy">
+              SHRI BLACK FOREST
+            </span>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-deep-chocolate text-pretty">
+              Krishna Plaza, 103, S Car St, Chidambaram, Tamil Nadu 608001.
+            </p>
+          </div>
+
+          <div class="pt-gutter-xs">
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Shri+Black+Forest%2C+Krishna+Plaza%2C+103%2C+S+Car+St%2C+Chidambaram%2C+Tamil+Nadu+608001" target="_blank" rel="noopener noreferrer" data-component-id="button-get-directions" data-component-type="button" data-component-variant="primary" class="inline-flex items-center justify-center gap-gutter-xs min-h-10 px-gutter-lg py-gutter-sm rounded-sm bg-deep-chocolate text-warm-ivory font-label text-label-sm uppercase tracking-wider transition-colors duration-state-change hover:bg-cherry-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deep-chocolate">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span>
+              <span data-design-text-token="label-sm">GET DIRECTIONS ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal-item md:col-span-7 flex flex-col gap-gutter-xs">
+          <div class="relative w-full overflow-hidden rounded-md border border-warm-beige bg-warm-ivory shadow-sm">
+            <iframe title="SHRI BLACK FOREST — Krishna Plaza, 103, S Car St, Chidambaram, Tamil Nadu 608001" src="https://maps.google.com/maps?q=Shri+Black+Forest,+Krishna+Plaza,+103,+S+Car+St,+Chidambaram,+Tamil+Nadu+608001,+India&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed" class="w-full h-72 md:h-80 border-0 block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </div>
+          <div class="flex items-center justify-between gap-gutter-sm pt-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-wider text-chocolate-muted">
+              Krishna Plaza · Chidambaram
+            </span>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Shri+Black+Forest%2C+Krishna+Plaza%2C+103%2C+S+Car+St%2C+Chidambaram%2C+Tamil+Nadu+608001" target="_blank" rel="noopener noreferrer" data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-wider text-cherry-burgundy hover:text-deep-chocolate underline underline-offset-4 whitespace-nowrap">
+              Google Maps ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: FINAL CTA & COMPACT FOOTER (DEEP CHOCOLATE BASE, WARM IVORY WHATSAPP PRIMARY) -->
+    <footer id="final-cta" class="w-full bg-deep-chocolate text-warm-ivory py-gutter-2xl md:py-section">
+      <div class="max-w-5xl mx-auto px-page-margin flex flex-col gap-gutter-xl">
+        <div class="flex flex-col items-start md:items-center md:text-center gap-gutter-md">
+          <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-widest text-soft-caramel">
+            SHRI BLACK FOREST · CHIDAMBARAM, TAMIL NADU
+          </span>
+
+          <h2 data-design-text-token="display-lg-mobile" class="font-display text-display-lg-mobile md:text-display-lg text-warm-ivory uppercase text-balance">
+            YOUR CRAVINGS CALLED. ANSWER THEM.
+          </h2>
+
+          <div class="flex flex-wrap items-center gap-gutter-md pt-gutter-xs">
+            <a href="#final-cta" data-component-id="button-whatsapp-primary" data-component-type="button" data-component-variant="with-icon" class="inline-flex items-center justify-center gap-gutter-xs px-gutter-lg py-gutter-sm rounded-full bg-warm-ivory text-deep-chocolate font-label text-label-lg uppercase tracking-wider transition-transform duration-state-change ease-state-change hover:-translate-y-0.5 hover:bg-soft-caramel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warm-ivory">
+              <span class="material-symbols-outlined" aria-hidden="true">chat</span>
+              <span data-design-text-token="label-lg">Order on WhatsApp</span>
+            </a>
+
+            <a href="#final-cta" data-component-id="button-secondary-link" data-component-type="button" data-component-variant="tertiary" class="inline-flex items-center gap-gutter-xs px-gutter-md py-gutter-sm rounded-full border border-soft-caramel text-warm-ivory font-label text-label-lg uppercase tracking-wider hover:bg-soft-caramel hover:text-deep-chocolate transition-colors duration-state-change">
+              <span class="material-symbols-outlined" aria-hidden="true">call</span>
+              <span data-design-text-token="label-lg">Call</span>
+            </a>
+
+            <a href="#final-cta" data-component-id="button-secondary-link" data-component-type="button" data-component-variant="tertiary" class="inline-flex items-center gap-gutter-xs px-gutter-md py-gutter-sm rounded-full border border-soft-caramel text-warm-ivory font-label text-label-lg uppercase tracking-wider hover:bg-soft-caramel hover:text-deep-chocolate transition-colors duration-state-change">
+              <span class="material-symbols-outlined" aria-hidden="true">photo_camera</span>
+              <span data-design-text-token="label-lg">Instagram</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Compact placeholder contact metadata strip -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter-md border-t border-chocolate-muted pt-gutter-lg">
+          <div class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase text-soft-caramel">WhatsApp / Phone</span>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-warm-ivory">[+91 00000 00000 · Placeholder]</p>
+          </div>
+          <div class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase text-soft-caramel">Instagram</span>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-warm-ivory">[@shriblackforest · Placeholder]</p>
+          </div>
+          <div class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase text-soft-caramel">Location</span>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-warm-ivory">[Address, Chidambaram · Placeholder]</p>
+          </div>
+          <div class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase text-soft-caramel">Hours</span>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-warm-ivory">[Daily Hours · Placeholder]</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Floating Cart Pill -->
+  <button id="open-cart-btn" type="button" aria-label="Open shopping cart" class="fixed bottom-gutter-md right-gutter-md z-40 inline-flex items-center gap-gutter-sm px-gutter-md py-gutter-sm rounded-full bg-deep-chocolate text-warm-ivory border border-soft-caramel shadow-lg transition-transform duration-state-change hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deep-chocolate">
+    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">shopping_bag</span>
+    <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase tracking-wider">Cart</span>
+    <span id="cart-count-badge" class="inline-flex items-center justify-center min-w-6 h-6 px-gutter-xs rounded-full bg-cherry-burgundy text-warm-ivory font-label text-label-sm tabular-nums">0</span>
+  </button>
+
+  <!-- Subtle Confirmation Toast -->
+  <div id="cart-toast" role="status" aria-live="polite" class="fixed bottom-gutter-md left-gutter-md z-40 hidden items-center gap-gutter-xs px-gutter-md py-gutter-sm rounded-sm bg-deep-chocolate text-warm-ivory border border-soft-caramel shadow-lg">
+    <span class="material-symbols-outlined text-[16px] text-soft-caramel" aria-hidden="true">check_circle</span>
+    <span data-design-text-token="body-sm" class="font-body text-body-sm">Added to your cart</span>
+  </div>
+
+  <!-- Interactive Cart Drawer -->
+  <div id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title" class="fixed inset-0 z-50 hidden justify-end bg-deep-chocolate/60">
+    <div class="w-full max-w-sm h-full bg-warm-ivory text-deep-chocolate border-l border-warm-beige flex flex-col justify-between p-gutter-lg overflow-y-auto">
+      <div class="flex flex-col gap-gutter-md">
+        <div class="flex items-center justify-between border-b border-warm-beige pb-gutter-sm">
+          <h2 id="cart-drawer-title" data-design-text-token="title-lg" class="font-headline text-title-lg text-deep-chocolate">Your Cart</h2>
+          <button id="close-cart-btn" type="button" aria-label="Close shopping cart" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-ivory-soft text-deep-chocolate border border-warm-beige hover:bg-warm-beige transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+        </div>
+
+        <div id="cart-items-container" class="flex flex-col gap-gutter-md">
+          <p class="font-body text-body-sm text-chocolate-muted">Your cart is currently empty. Add a cake or pastry to begin.</p>
+        </div>
+      </div>
+
+      <div class="border-t border-warm-beige pt-gutter-md flex flex-col gap-gutter-md">
+        <div class="flex items-center justify-between">
+          <span data-design-text-token="label-sm" class="font-label text-label-sm uppercase text-chocolate-muted">Subtotal</span>
+          <span id="cart-subtotal" class="font-headline text-title-lg text-deep-chocolate tabular-nums">₹0</span>
+        </div>
+        <a href="#final-cta" id="cart-checkout-link" class="w-full inline-flex items-center justify-center gap-gutter-xs py-gutter-sm px-gutter-md rounded-full bg-deep-chocolate text-warm-ivory font-label text-label-sm uppercase tracking-wider hover:bg-cherry-burgundy transition-colors duration-state-change">
+          <span>Proceed to Order ↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var reveals = document.querySelectorAll('.reveal-item');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        reveals.forEach(function (el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+
+      var heroImg = document.getElementById('hero-bg-img');
+      var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (heroImg && !prefersReduced) {
+        window.addEventListener('scroll', function () {
+          var y = window.scrollY || 0;
+          if (y < window.innerHeight) {
+            heroImg.style.transform = 'translateY(' + (y * 0.12) + 'px) scale(1.02)';
+          }
+        }, { passive: true });
+      }
+
+      // Shopping Cart State & Integration
+      var cart = [];
+      try {
+        var saved = sessionStorage.getItem('sbf_cart');
+        if (saved) cart = JSON.parse(saved);
+      } catch (e) {}
+
+      var countBadge = document.getElementById('cart-count-badge');
+      var toast = document.getElementById('cart-toast');
+      var drawer = document.getElementById('cart-drawer');
+      var openCartBtn = document.getElementById('open-cart-btn');
+      var closeCartBtn = document.getElementById('close-cart-btn');
+      var checkoutLink = document.getElementById('cart-checkout-link');
+      var itemsContainer = document.getElementById('cart-items-container');
+      var subtotalEl = document.getElementById('cart-subtotal');
+      var toastTimer = null;
+
+      function saveCart() {
+        try {
+          sessionStorage.setItem('sbf_cart', JSON.stringify(cart));
+        } catch (e) {}
+      }
+
+      function showToast() {
+        if (!toast) return;
+        toast.classList.remove('hidden');
+        toast.classList.add('inline-flex');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toast.classList.add('hidden');
+          toast.classList.remove('inline-flex');
+        }, 2200);
+      }
+
+      function renderCart() {
+        var totalQty = 0;
+        var subtotal = 0;
+        cart.forEach(function (item) {
+          totalQty += item.qty;
+          subtotal += item.price * item.qty;
+        });
+
+        if (countBadge) countBadge.textContent = String(totalQty);
+        if (subtotalEl) subtotalEl.textContent = '₹' + subtotal.toLocaleString('en-IN');
+
+        if (!itemsContainer) return;
+        if (cart.length === 0) {
+          itemsContainer.innerHTML = '<p class="font-body text-body-sm text-chocolate-muted">Your cart is currently empty. Add a cake or pastry to begin.</p>';
+          return;
+        }
+
+        itemsContainer.innerHTML = cart.map(function (item) {
+          return (
+            '<div class="flex items-center gap-gutter-sm border-b border-warm-beige pb-gutter-sm">' +
+              '<img src="' + item.image + '" alt="' + item.name + '" class="w-14 h-14 object-cover rounded-sm shrink-0" />' +
+              '<div class="flex-1 min-w-0">' +
+                '<p class="font-body font-bold text-body-sm text-deep-chocolate truncate">' + item.name + '</p>' +
+                '<p class="font-body text-body-sm text-chocolate-muted tabular-nums">₹' + item.price.toLocaleString('en-IN') + '</p>' +
+                '<div class="flex items-center gap-gutter-sm pt-gutter-xs">' +
+                  '<button type="button" data-cart-dec="' + item.id + '" aria-label="Decrease quantity" class="w-6 h-6 rounded-sm border border-warm-beige bg-ivory-soft text-deep-chocolate font-label text-label-sm">-</button>' +
+                  '<span class="font-label text-label-sm text-deep-chocolate tabular-nums">' + item.qty + '</span>' +
+                  '<button type="button" data-cart-inc="' + item.id + '" aria-label="Increase quantity" class="w-6 h-6 rounded-sm border border-warm-beige bg-ivory-soft text-deep-chocolate font-label text-label-sm">+</button>' +
+                  '<button type="button" data-cart-rem="' + item.id + '" class="ml-auto font-label text-label-sm uppercase text-cherry-burgundy">Remove</button>' +
+                '</div>' +
+              '</div>' +
+            '</div>'
+          );
+        }).join('');
+      }
+
+      document.querySelectorAll('[data-add-to-cart]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var id = btn.getAttribute('data-product-id');
+          var name = btn.getAttribute('data-product-name');
+          var price = parseInt(btn.getAttribute('data-product-price'), 10) || 0;
+          var image = btn.getAttribute('data-product-image');
+
+          var existing = cart.find(function (c) { return c.id === id; });
+          if (existing) {
+            existing.qty += 1;
+          } else {
+            cart.push({ id: id, name: name, price: price, image: image, qty: 1 });
+          }
+          saveCart();
+          renderCart();
+          showToast();
+        });
+      });
+
+      if (itemsContainer) {
+        itemsContainer.addEventListener('click', function (e) {
+          var incId = e.target.getAttribute('data-cart-inc');
+          var decId = e.target.getAttribute('data-cart-dec');
+          var remId = e.target.getAttribute('data-cart-rem');
+
+          if (incId) {
+            var item = cart.find(function (c) { return c.id === incId; });
+            if (item) item.qty += 1;
+          } else if (decId) {
+            var itemD = cart.find(function (c) { return c.id === decId; });
+            if (itemD) {
+              itemD.qty -= 1;
+              if (itemD.qty <= 0) {
+                cart = cart.filter(function (c) { return c.id !== decId; });
+              }
+            }
+          } else if (remId) {
+            cart = cart.filter(function (c) { return c.id !== remId; });
+          } else {
+            return;
+          }
+          saveCart();
+          renderCart();
+        });
+      }
+
+      if (openCartBtn && drawer) {
+        openCartBtn.addEventListener('click', function () {
+          drawer.classList.remove('hidden');
+          drawer.classList.add('flex');
+        });
+      }
+      if (closeCartBtn && drawer) {
+        closeCartBtn.addEventListener('click', function () {
+          drawer.classList.add('hidden');
+          drawer.classList.remove('flex');
+        });
+      }
+      if (checkoutLink && drawer) {
+        checkoutLink.addEventListener('click', function () {
+          drawer.classList.add('hidden');
+          drawer.classList.remove('flex');
+        });
+      }
+
+      renderCart();
+    })();
+  </script>
+
+
+</body></html>
