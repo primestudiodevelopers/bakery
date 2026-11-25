@@ -38,13 +38,13 @@ const Hero = memo(function Hero() {
         ref={heroImgRef}
         baseName="hero_bg"
         widths={[480, 640, 768]}
-        sizes="(max-width: 640px) 320px, 768px"
+        sizes="(max-width: 640px) 480px, (max-width: 1024px) 768px, 1200px"
         fallbackSrc="/images/hero_bg.jpg"
         alt="SHRI BLACK FOREST Black Forest layer cake with fresh whipped cream, chocolate shavings, and cherries on an ivory stand"
         width={768}
         height={1376}
         priority={true}
-        className="absolute inset-0 w-full h-full object-cover object-bottom"
+        className="absolute inset-0 w-full h-full object-cover object-bottom sm:object-[54%_bottom] md:w-[125%] md:max-w-none md:-left-[17%] md:object-[50%_47%] transition-[object-position,transform] duration-300"
       />
       {/* Subtle top warm-chocolate gradient only behind upper typography so the cake remains bright and dominant */}
       <div
